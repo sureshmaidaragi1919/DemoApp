@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ExternalDependencies">
+    <plugin id="CVS" />
+    <plugin id="Git4Idea" />
+    <plugin id="com.android.tools.games" />
+    <plugin id="com.android.tools.ndk" />
+    <plugin id="com.android.tools.ndk.workspace" />
+    <plugin id="com.google.appindexing" />
+    <plugin id="com.google.cluestick.studioclient" />
+    <plugin id="com.google.gct" />
+    <plugin id="com.google.gct.core" />
+    <plugin id="com.google.gct.test.recorder" />
+    <plugin id="com.google.gct.testing" />
+    <plugin id="com.google.services" />
+    <plugin id="com.google.services.firebase" />
+    <plugin id="com.google.urlassistant" />
+    <plugin id="org.jetbrains.android" />
+    <plugin id="org.jetbrains.plugins.github" />
+  </component>
+</project>
