@@ -17,4 +17,5 @@
 
 ##Known changes
 1. Not handled app permission because for this requirement we dont need any app permission
-2. 
+2. No imagepreview shown for uknown image urls. we can handle with default images
+3. Handled null data from API response
