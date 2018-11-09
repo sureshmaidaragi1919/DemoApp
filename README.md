@@ -10,4 +10,4 @@
 7. Added google play signing keys
 8. Generated release build with verion 1 and version code 1.0
 9. While generating we can generate build bundle instead APK which does dynamic delivery and there reduces the apk size
-10. I haven't generated build bundle because this not going to be released on playstore
+10. I haven't generated build bundle because this its just demoApp
