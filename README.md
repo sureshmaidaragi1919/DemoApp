@@ -20,3 +20,4 @@
 1. Not handled app permission because for this requirement we dont need any app permission
 2. No imagepreview shown for uknown image urls. we can handle with default images
   
+https://github.com/sureshmaidaragi1919/DemoApp/blob/master/DemoApp/ss-when%20everything%20working%20fine.png
