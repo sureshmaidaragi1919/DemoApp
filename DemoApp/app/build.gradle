@@ -5,6 +5,14 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 android {
+    signingConfigs {
+        config {
+            keyAlias 'key0'
+            keyPassword 'wipro1234'
+            storePassword 'wipro1234'
+            storeFile file('/Users/sureshmaidaragi/Downloads/WiproKeystore')
+        }
+    }
     compileSdkVersion 28
     defaultConfig {
         applicationId "maida.com.demoapp"
@@ -15,19 +23,38 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
+
         release {
-            minifyEnabled false
+            debuggable false
+            minifyEnabled true
+            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+        debug {
+            debuggable true
+            minifyEnabled false
+            shrinkResources false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.config
+            proguardFile '/Users/sureshmaidaragi/Downloads/DemoApp/app/proguard-rules.pro'
+        }
     }
+    buildToolsVersion '28.0.2'
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'com.android.support:appcompat-v7:28.0.0'
     implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+    implementation 'com.squareup.okhttp3:okhttp:3.11.0'
+    //Used to make API requests
+    implementation 'com.github.bumptech.glide:glide:3.6.1'
+    //Used to handle image loading
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    testImplementation 'org.mockito:mockito-all:1.10.19'
+    //Used to write mock objects for ui unit testing
+    androidTestImplementation 'com.android.support.test:rules:1.0.2'
+    implementation 'com.android.support:design:28.0.0'
 }

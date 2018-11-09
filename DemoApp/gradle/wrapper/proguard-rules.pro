@@ -28,3 +28,8 @@
 -dontwarn okhttp3.**
 -dontwarn com.asksira.**
 -dontwarn com.bumptech.glide.**
+
+-dontwarn com.amazonaws.**
+-dontwarn com.fasterxml.**
+
+
