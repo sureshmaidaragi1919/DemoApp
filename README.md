@@ -14,6 +14,7 @@
 11. Added swipe to refresh 
 12. Handled the screen orientation 
 13. Handled null data from API response
+14. Code is written in kotlin 1.2.7
 
 ##Known changes
 1. Not handled app permission because for this requirement we dont need any app permission
