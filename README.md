@@ -13,9 +13,9 @@
 10. I haven't generated build bundle because this its just demoApp
 11. Added swipe to refresh 
 12. Handled the screen orientation 
-
+13. Handled null data from API response
 
 ##Known changes
 1. Not handled app permission because for this requirement we dont need any app permission
 2. No imagepreview shown for uknown image urls. we can handle with default images
-3. Handled null data from API response
+  
