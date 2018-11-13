@@ -44,7 +44,7 @@ class ResponseManager {
                     }
                     mCountryModel = CountryModel(countryName, rowModelList)
 
-                    return mCountryModel!!
+                    return mCountryModel
                 } catch (exception: Exception) {
                     exception.printStackTrace()
                 }

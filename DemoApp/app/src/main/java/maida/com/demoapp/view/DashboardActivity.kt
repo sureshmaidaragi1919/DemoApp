@@ -1,6 +1,5 @@
 package maida.com.demoapp.view
 
-import android.content.res.Configuration
 import android.os.Bundle
 import android.os.Handler
 import android.os.Message
@@ -50,13 +49,13 @@ class DashboardActivity : BaseActivity(), SwipeRefreshLayout.OnRefreshListener, 
         override fun handleMessage(message: Message): Boolean {
 
             swipe_refresh_layout.isRefreshing = false
-            if (message?.what == GetCountryFactsThread.GETCOUNTRYFACTSTHREAD_SUCCESS) {
+            if (message.what == GetCountryFactsThread.GETCOUNTRYFACTSTHREAD_SUCCESS) {
                 val countryFactRespo = message.obj as String
                 mCountryModel = ResponseManager.parseCountryFactsRespo(countryFactRespo)
 
                 updateAdp(mCountryModel!!)
 
-            } else if (message?.what == GetCountryFactsThread.GETCOUNTRYFACTSTHREAD_FAIL) {
+            } else if (message.what == GetCountryFactsThread.GETCOUNTRYFACTSTHREAD_FAIL) {
                 //Write code handle if any session expiry
                 showSnackBar(resources.getString(R.string.no_internet))
             }
@@ -77,20 +76,18 @@ class DashboardActivity : BaseActivity(), SwipeRefreshLayout.OnRefreshListener, 
             */
         if (savedInstanceState != null) {
             //When rotation occurs
-            mCountryModel = savedInstanceState.getSerializable("myData") as CountryModel?
-            updateAdp(mCountryModel!!);
+
         } else {
             //when first time activity loaded
             loadRecylerViewdata()
-            swipe_refresh_layout.setOnRefreshListener(this);
-            swipe_refresh_layout.setColorSchemeResources(R.color.colorPrimary,
-                    android.R.color.holo_green_dark,
-                    android.R.color.holo_orange_dark,
-                    android.R.color.holo_red_light);
             // dashboardActivityPresenter = DashboardActivityPresenter(this, GetCountryFactsThread())//Uncomment during unit testing
-
         }
 
+        swipe_refresh_layout.setOnRefreshListener(this);
+        swipe_refresh_layout.setColorSchemeResources(R.color.colorPrimary,
+                android.R.color.holo_green_dark,
+                android.R.color.holo_orange_dark,
+                android.R.color.holo_red_light);
     }
 
     //Handle screen orientation to avoid making network calls
@@ -99,15 +96,11 @@ class DashboardActivity : BaseActivity(), SwipeRefreshLayout.OnRefreshListener, 
         super.onSaveInstanceState(outState)
     }
 
-    override fun onConfigurationChanged(newConfig: Configuration?) {
-        super.onConfigurationChanged(newConfig)
-        var orientation = newConfig?.orientation
-        if (orientation == Configuration.ORIENTATION_PORTRAIT)
-            Log.d("tag", "Portrait");
-        else if (orientation == Configuration.ORIENTATION_LANDSCAPE)
-            Log.d("tag", "Landscape");
-        else
-            Log.w("tag", "other: " + orientation)
+    override fun onRestoreInstanceState(savedInstanceState: Bundle?) {
+        super.onRestoreInstanceState(savedInstanceState)
+        mCountryModel = savedInstanceState?.getSerializable("myData") as CountryModel?
+        updateAdp(mCountryModel!!);
+
     }
 
     override fun onRefresh() {
@@ -119,13 +112,14 @@ class DashboardActivity : BaseActivity(), SwipeRefreshLayout.OnRefreshListener, 
             swipe_refresh_layout.isRefreshing = true
             GetCountryFactsThread(this, mIncomingHandler).start()
         } else {
+            swipe_refresh_layout.isRefreshing = false
             showSnackBar(resources.getString(R.string.no_internet))
         }
     }
 
     private fun updateAdp(countryModel: CountryModel) {
 //        dashboardActivityPresenter.onUpdateAdp()  //Uncomment during unit testing
-        factrRowsList = countryModel?.rows as ArrayList<RowModel>?
+        factrRowsList = countryModel.rows as ArrayList<RowModel>?
         setTitle(mCountryModel?.title)
         countryFactsAdapter = CountryFactsAdapter(this, factrRowsList!!)
         llm.orientation = LinearLayoutManager.VERTICAL
@@ -146,9 +140,9 @@ class DashboardActivity : BaseActivity(), SwipeRefreshLayout.OnRefreshListener, 
     fun showSnackBar(userMessage: String) {
         val snackbar = Snackbar
                 .make(dashboard_cordlyt, userMessage, Snackbar.LENGTH_INDEFINITE)
-                .setAction("RETRY", object : View.OnClickListener {
+                .setAction(resources.getString(R.string.lable_retry), object : View.OnClickListener {
                     override fun onClick(view: View) {
-                        val snackbar1 = Snackbar.make(swipe_refresh_layout, "Trying!", Snackbar.LENGTH_LONG)
+                        val snackbar1 = Snackbar.make(swipe_refresh_layout, resources.getString(R.string.lable_trying), Snackbar.LENGTH_LONG)
                         snackbar1.show()
                         onRefresh()
                     }

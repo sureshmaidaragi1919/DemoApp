@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="facts_card_margin">3dp</dimen>
+    <dimen name="facts_rlt_padding">7dp</dimen>
+    <dimen name="facts_rlt_margin">7dp</dimen>
+    <dimen name="facts_tv_margin_right">100dp</dimen>
+    <dimen name="facts_img_width">100dp</dimen>
+    <dimen name="facts_img_height">60dp</dimen>
+    <dimen name="facts_tv_line_spacing_3dp">3dp</dimen>
+    <dimen name="facts_tv_line_spacing_2dp">2dp</dimen>
+</resources>

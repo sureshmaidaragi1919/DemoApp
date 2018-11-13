@@ -6,8 +6,8 @@ import maida.com.demoapp.threads.GetCountryFactsThread
 class DashboardActivityPresenter {
 
 
-    private lateinit var dashboardView: DashboardView
-    private lateinit var getCountryFactsThread: GetCountryFactsThread
+    private var dashboardView: DashboardView
+    private var getCountryFactsThread: GetCountryFactsThread
 
     constructor(dasbhoardView: DashboardView, getCountryFactsThread: GetCountryFactsThread) {
         this.dashboardView = dasbhoardView

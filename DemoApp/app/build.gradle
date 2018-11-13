@@ -10,7 +10,7 @@ android {
             keyAlias 'key0'
             keyPassword 'wipro1234'
             storePassword 'wipro1234'
-            storeFile file('/Users/sureshmaidaragi/Downloads/WiproKeystore')
+            storeFile file('../WiproKeystore')
         }
     }
     compileSdkVersion 28
@@ -36,7 +36,7 @@ android {
             shrinkResources false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.config
-            proguardFile '/Users/sureshmaidaragi/Downloads/DemoApp/app/proguard-rules.pro'
+            proguardFiles fileTree(dir: 'proguard', include: ['*.pro']).asList().toArray()
         }
     }
     buildToolsVersion '28.0.2'

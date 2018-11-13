@@ -8,10 +8,14 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <!--
+        Textview title style
+    -->
     <style name="TextViewTitleStyle">
         <item name="android:textColor">@android:color/black</item>
         <item name="android:textSize">17sp</item>
     </style>
+
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>

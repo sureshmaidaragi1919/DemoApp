@@ -9,10 +9,8 @@ import java.io.IOException
 class RequestManager {
     companion object {
 
-/*
-        mContext can be used to store the data in appPref for now its not required know thing
-*/
-        fun getData(mContext: Context?, urlString: String): String {
+
+        fun getData(urlString: String): String {
             val client = OkHttpClient()
             val request = Request.Builder()
                     .url(urlString)

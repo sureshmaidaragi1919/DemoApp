@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">DemoApp</string>
     <string name="no_internet">Please check internet connections</string>
+    <string name="lable_retry">Retry</string>
+    <string name="lable_trying">Trying...</string>
 
 </resources>

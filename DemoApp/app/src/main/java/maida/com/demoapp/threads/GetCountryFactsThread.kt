@@ -22,30 +22,28 @@ Thread class with handler to make API request
 
     companion object {
 
-        val GETCOUNTRYFACTSTHREAD_SUCCESS = 1;
-        val GETCOUNTRYFACTSTHREAD_FAIL = -1;
+        val GETCOUNTRYFACTSTHREAD_SUCCESS = 1
+        val GETCOUNTRYFACTSTHREAD_FAIL = -1
     }
 
     override fun run() {
 
-        var countryFactRespo = RequestManager.getData(mContext, Constants.GETCOUNTRYFACT);
-        if (!countryFactRespo.isNullOrEmpty()) {
-            sendSuccess(countryFactRespo)
-        } else {
+        var countryFactRespo = RequestManager.getData(Constants.GETCOUNTRYFACT)
+        if (!countryFactRespo.isNullOrEmpty()) sendSuccess(countryFactRespo) else {
             sendFailure()
         }
     }
 
     fun sendSuccess(respString: String) {
 
-        var msg = Message();
-        msg.what = GETCOUNTRYFACTSTHREAD_SUCCESS;
-        msg.obj = respString;
-        mHandler!!.sendMessage(msg);
+        var msg = Message()
+        msg.what = GETCOUNTRYFACTSTHREAD_SUCCESS
+        msg.obj = respString
+        mHandler!!.sendMessage(msg)
     }
 
     fun sendFailure() {
-        mHandler!!.sendEmptyMessage(GETCOUNTRYFACTSTHREAD_FAIL);
+        mHandler!!.sendEmptyMessage(GETCOUNTRYFACTSTHREAD_FAIL)
     }
 
 

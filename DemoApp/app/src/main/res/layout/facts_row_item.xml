@@ -3,57 +3,46 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="3dp"
+    android:layout_margin="@dimen/facts_card_margin"
     app:cardCornerRadius="0dp">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="7dp">
+        android:padding="@dimen/facts_rlt_padding">
 
         <TextView
             android:id="@+id/facts_title"
             style="@style/TextViewTitleStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginRight="27dp"
             android:ellipsize="end"
-            android:lineSpacingExtra="3dp"
+            android:lineSpacingExtra="@dimen/facts_tv_line_spacing_3dp"
             android:maxLines="2"
-             android:textColor="@android:color/holo_blue_dark" />
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentRight="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="32dp"
-            android:src="@drawable/ic_baseline_arrow_forward" />
+            android:textColor="@android:color/holo_blue_dark" />
 
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/facts_title"
-            android:layout_marginTop="7dp"
-            android:layout_marginRight="27dp">
+            android:layout_marginTop="@dimen/facts_rlt_margin">
 
             <TextView
                 android:id="@+id/facts_desc"
                 style="@style/TextViewTitleStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="100dp"
+                android:layout_marginRight="@dimen/facts_tv_margin_right"
                 android:ellipsize="end"
-                android:lineSpacingExtra="2dp"
+                android:lineSpacingExtra="@dimen/facts_tv_line_spacing_2dp"
                 android:maxLines="3"
-                 android:textColor="@android:color/black"
+                android:textColor="@android:color/black"
                 android:textSize="14sp" />
 
             <ImageView
                 android:id="@+id/facts_img"
-                android:layout_width="100dp"
-                android:layout_height="60dp"
+                android:layout_width="@dimen/facts_img_width"
+                android:layout_height="@dimen/facts_img_height"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"

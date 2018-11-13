@@ -22,7 +22,7 @@ class CountryFactsAdapter(context: Context, factsList: ArrayList<RowModel>) : Re
 
     override fun onCreateViewHolder(parent: ViewGroup, position: Int): FactsViewsHolder {
 
-        val view = LayoutInflater.from(parent?.getContext()).inflate(R.layout.facts_row_item, parent, false)
+        val view = LayoutInflater.from(parent.getContext()).inflate(R.layout.facts_row_item, parent, false)
         return FactsViewsHolder(view)
     }
 
@@ -30,7 +30,7 @@ class CountryFactsAdapter(context: Context, factsList: ArrayList<RowModel>) : Re
 
         factsViewholder.factTitleTv.setText(items?.get(position)?.title)
         factsViewholder.factDescTv.setText(items?.get(position)?.description)
-        Glide.with(context).load(items?.get(position)?.imageHref).into(factsViewholder?.factImageView)
+        Glide.with(context).load(items?.get(position)?.imageHref).into(factsViewholder.factImageView)
 
     }
 
