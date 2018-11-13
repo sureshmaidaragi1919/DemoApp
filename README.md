@@ -15,6 +15,8 @@
 12. Handled the screen orientation 
 13. Handled null data from API response
 14. Code is written in kotlin 1.2.7
+15. Generalized the proguard & keystore files
+16. Written another mockito unit test for network availability
 
 ##Known changes
 1. Not handled app permission because for this requirement we dont need any app permission
