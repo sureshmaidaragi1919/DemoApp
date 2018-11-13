@@ -32,4 +32,13 @@ class DashboardActivityPresenterTest {
             Mockito.verify(dashboardView).showUserError("Not able to load data due screen roated please swipe down to refresh")
         }
     }
+
+    @Test
+    fun showIsNetworkAvailable() {
+        if (dashboardView.checkNetworkState()) {
+            dashboardActivityPresenter.onUpdateAdp()
+        } else {
+            Mockito.verify(dashboardView).showUserError("Internet connection not available")
+        }
+    }
 }

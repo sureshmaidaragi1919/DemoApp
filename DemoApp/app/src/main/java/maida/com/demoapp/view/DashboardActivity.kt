@@ -22,7 +22,6 @@ import maida.com.demoapp.util.CommonUtils
 
 class DashboardActivity : BaseActivity(), SwipeRefreshLayout.OnRefreshListener, DashboardView {
 
-
     /* Pagination can be handled if API response is giving following parameters
      *
      * 1. Page-number
@@ -80,9 +79,9 @@ class DashboardActivity : BaseActivity(), SwipeRefreshLayout.OnRefreshListener, 
         } else {
             //when first time activity loaded
             loadRecylerViewdata()
-            // dashboardActivityPresenter = DashboardActivityPresenter(this, GetCountryFactsThread())//Uncomment during unit testing
         }
 
+        dashboardActivityPresenter = DashboardActivityPresenter(this, GetCountryFactsThread())//Uncomment during unit testing
         swipe_refresh_layout.setOnRefreshListener(this);
         swipe_refresh_layout.setColorSchemeResources(R.color.colorPrimary,
                 android.R.color.holo_green_dark,
@@ -101,6 +100,7 @@ class DashboardActivity : BaseActivity(), SwipeRefreshLayout.OnRefreshListener, 
         mCountryModel = savedInstanceState?.getSerializable("myData") as CountryModel?
         updateAdp(mCountryModel!!);
 
+
     }
 
     override fun onRefresh() {
@@ -118,7 +118,7 @@ class DashboardActivity : BaseActivity(), SwipeRefreshLayout.OnRefreshListener, 
     }
 
     private fun updateAdp(countryModel: CountryModel) {
-//        dashboardActivityPresenter.onUpdateAdp()  //Uncomment during unit testing
+        dashboardActivityPresenter.onUpdateAdp()  //Uncomment during unit testing
         factrRowsList = countryModel.rows as ArrayList<RowModel>?
         setTitle(mCountryModel?.title)
         countryFactsAdapter = CountryFactsAdapter(this, factrRowsList!!)
@@ -129,12 +129,18 @@ class DashboardActivity : BaseActivity(), SwipeRefreshLayout.OnRefreshListener, 
 
     //Run this using Junit.4
     override fun screenRoated(): Boolean {
-        //dashboardActivityPresenter.onUpdateAdp() //Uncomment during unit testing
+        dashboardActivityPresenter.onUpdateAdp() //Uncomment during unit testing
         return true
     }
 
     override fun showUserError(s: String) {
         Log.e("DashboardActivity", s)
+    }
+
+    override fun checkNetworkState(): Boolean {
+        Log.d("Mockito networkstate", "available")
+
+        return true
     }
 
     fun showSnackBar(userMessage: String) {
